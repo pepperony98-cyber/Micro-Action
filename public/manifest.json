@@ -1,0 +1,19 @@
+{
+  "name": "今天抽一个就好",
+  "short_name": "抽一个就好",
+  "description": "轻量随机任务提醒 PWA",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fff8e7",
+  "theme_color": "#f7c86b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

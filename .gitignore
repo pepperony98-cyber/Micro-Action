@@ -1,0 +1,10 @@
+node_modules
+.next
+out
+dist
+.env*.local
+.vercel
+*.log
+tsconfig.tsbuildinfo
+outputs
+ADHD.html.txt

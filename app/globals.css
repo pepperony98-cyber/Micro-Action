@@ -1,0 +1,773 @@
+:root {
+  color-scheme: light;
+  --bg: #fbf7ef;
+  --paper: #fffdf6;
+  --ink: #25231f;
+  --muted: #9aa0ad;
+  --line: #ebe4d8;
+  --gold: #b9974b;
+  --green: #74bd7e;
+  --green-deep: #438f52;
+  --red: #e56557;
+  --red-deep: #c54d42;
+  --shadow: 0 20px 45px rgba(104, 80, 31, 0.13);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--bg);
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 18% 8%, rgba(255, 231, 151, 0.34), transparent 25rem),
+    radial-gradient(circle at 78% 2%, rgba(195, 241, 213, 0.48), transparent 24rem),
+    linear-gradient(180deg, #fbf7ef 0%, #faf8f1 100%);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.46;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+.pageShell {
+  width: min(100%, 844px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: calc(28px + env(safe-area-inset-top, 0px)) 28px calc(118px + env(safe-area-inset-bottom, 0px));
+}
+
+.phoneStage {
+  position: relative;
+  overflow: hidden;
+  min-height: 780px;
+  padding: 34px 34px 30px;
+  background:
+    radial-gradient(circle at 88% 10%, rgba(215, 249, 224, 0.7), transparent 22rem),
+    radial-gradient(circle at 12% 2%, rgba(255, 238, 190, 0.58), transparent 21rem),
+    #fffdf5;
+}
+
+.phoneStage h1 {
+  margin: 18px 0 30px;
+  font-size: clamp(2rem, 6.45vw, 35px);
+  line-height: 1.15;
+  font-weight: 950;
+  letter-spacing: 0;
+}
+
+.statePicker {
+  margin-bottom: 58px;
+}
+
+.statePicker p {
+  display: inline-block;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  color: #1e2422;
+  font-size: clamp(1.25rem, 4.5vw, 1.8rem);
+  font-weight: 950;
+}
+
+.homeMoodButtons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.homeMoodButtons button {
+  width: 100%;
+  min-width: 0;
+  height: 50px;
+  min-height: 50px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: #171512;
+  font-size: clamp(1.05rem, 2.25vw, 1.35rem);
+  font-weight: 950;
+  letter-spacing: 0;
+  white-space: nowrap;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.04);
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    filter 150ms ease;
+}
+
+.homeMoodButtons button:hover,
+.gachaButton:hover,
+.resultActions button:hover,
+.sosButton:hover,
+.addTaskRow button:hover,
+.importPanel button:hover,
+.configTabs button:hover,
+.taskIconActions button:hover {
+  filter: brightness(0.99);
+  transform: translateY(-1px);
+}
+
+.homeMoodButtons button.active {
+  box-shadow:
+    0 0 0 3px rgba(37, 35, 31, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.04);
+}
+
+.moodGood {
+  background: #dff3ff;
+}
+
+.moodOkay {
+  background: #f5ead0;
+}
+
+.moodLow {
+  background: #ffe4dc;
+}
+
+.drawStage {
+  display: grid;
+  align-items: stretch;
+  min-height: 282px;
+  margin-bottom: 44px;
+}
+
+.gachaCard {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 282px;
+  padding: 22px 28px 30px;
+  border: 5px solid var(--gold);
+  border-radius: 22px;
+  background: rgba(255, 253, 246, 0.72);
+  box-shadow: 0 20px 35px rgba(153, 119, 41, 0.18);
+}
+
+.gachaMachineImage {
+  width: min(82%, 340px);
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  object-position: center;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 12px 18px rgba(126, 92, 31, 0.14));
+}
+
+.gachaButton {
+  min-height: 58px;
+  margin-top: 10px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #3a2f14;
+  font-size: clamp(1.08rem, 4vw, 1.55rem);
+  font-weight: 950;
+  box-shadow:
+    0 14px 25px rgba(132, 97, 34, 0.17),
+    inset 0 1px 0 #fff;
+}
+
+.dynamicDivider {
+  display: grid;
+  grid-template-columns: minmax(26px, 1fr) auto minmax(26px, 1fr);
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  color: #b4b0aa;
+  font-size: clamp(1.12rem, 4.2vw, 1.65rem);
+  font-weight: 850;
+}
+
+.dynamicDivider::before,
+.dynamicDivider::after {
+  height: 5px;
+  border-radius: 999px;
+  background: repeating-linear-gradient(90deg, #ded8ce 0 30px, transparent 30px 45px);
+  content: "";
+}
+
+.resultCard {
+  align-self: center;
+  min-height: 220px;
+  padding: 34px 36px 32px;
+  border: 2px solid #bfeccd;
+  border-radius: 22px;
+  background: #eef9f2;
+}
+
+.resultCard.sosResult {
+  border-color: #f0b5ad;
+  background: #fff2f0;
+}
+
+.resultCard.empty {
+  border-color: #e7d8a3;
+  background: #fff9df;
+  box-shadow: 0 16px 26px rgba(153, 119, 41, 0.12);
+}
+
+.resultCard h2 {
+  margin-bottom: 12px;
+  font-size: clamp(1.72rem, 4.7vw, 2.4rem);
+  font-weight: 950;
+  line-height: 1.28;
+  overflow-wrap: anywhere;
+}
+
+.resultEyebrow {
+  margin-bottom: 8px;
+  color: #438f52;
+  font-size: clamp(1.08rem, 3.4vw, 1.45rem);
+  font-weight: 950;
+}
+
+.resultCard.sosResult .resultEyebrow {
+  color: #c54d42;
+}
+
+.resultTask {
+  color: #273142;
+}
+
+.resultHint {
+  margin-bottom: 34px;
+  color: #68b37a;
+  font-size: clamp(1.05rem, 3.4vw, 1.4rem);
+  font-weight: 850;
+}
+
+.resultCard.sosResult .resultHint {
+  color: #d1786f;
+}
+
+.resultCard.empty button {
+  min-height: 46px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: #f9dd76;
+  color: #7a5612;
+  font-weight: 950;
+}
+
+.resultActions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.resultActions button {
+  width: 100%;
+  min-height: 72px;
+  padding: 0 18px;
+  border-radius: 20px;
+  color: #303848;
+  font-size: clamp(1.05rem, 3.8vw, 1.38rem);
+  font-weight: 950;
+}
+
+.resultActions button:first-child {
+  border: 2px solid #c7efd3;
+  background: #fff;
+}
+
+.resultActions button:nth-child(2) {
+  background: #40b965;
+  color: #fff;
+}
+
+.doneLine {
+  margin-top: 12px;
+  color: #438f52 !important;
+}
+
+.sosButton {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  min-height: 82px;
+  padding: 0 26px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #f17365 0%, #df584d 100%);
+  color: #fff9ee;
+  font-size: clamp(1.12rem, 4.4vw, 1.65rem);
+  font-weight: 950;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.22),
+    0 12px 22px rgba(204, 75, 64, 0.2);
+}
+
+.sosButton span {
+  display: inline-block;
+}
+
+.configSection {
+  padding: 46px 10px 0;
+}
+
+.reminderCard,
+.poolConfigCard,
+.importPanel {
+  border: 2px solid var(--line);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.reminderCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 22px;
+  min-height: 144px;
+  margin-bottom: 48px;
+  padding: 28px 32px;
+}
+
+.reminderCard h2 {
+  margin-bottom: 8px;
+  color: #374052;
+  font-size: clamp(1.2rem, 4.2vw, 1.7rem);
+  font-weight: 950;
+}
+
+.reminderCard p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 3.6vw, 1.35rem);
+  font-weight: 850;
+}
+
+.timeInput {
+  width: 140px;
+  min-height: 60px;
+  padding: 0 14px;
+  border: 2px solid #dfe2e7;
+  border-radius: 16px;
+  background: #f8f9fb;
+  color: #323948;
+  font-size: 1.35rem;
+  font-weight: 950;
+  outline: none;
+}
+
+.toggleSwitch {
+  position: relative;
+  width: 74px;
+  height: 40px;
+  border-radius: 999px;
+  background: #d4d9df;
+}
+
+.toggleSwitch span {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 160ms ease;
+}
+
+.toggleSwitch.on {
+  background: #18b77a;
+}
+
+.toggleSwitch.on span {
+  transform: translateX(34px);
+}
+
+.poolConfigCard {
+  margin-bottom: 48px;
+  padding: 32px;
+}
+
+.configTabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin-bottom: 36px;
+  padding: 8px;
+  border-radius: 22px;
+  background: #eff1f5;
+}
+
+.configTabs button {
+  justify-self: center;
+  width: min(110px, 100%);
+  min-height: 56px;
+  padding: 0 8px;
+  border-radius: 16px;
+  background: transparent;
+  color: #9aa0ad;
+  font-size: clamp(0.96rem, 3.3vw, 1.25rem);
+  font-weight: 950;
+}
+
+.configTabs button.active {
+  background: #fff;
+  color: #2f3646;
+  box-shadow: 0 10px 22px rgba(58, 67, 83, 0.08);
+}
+
+.poolQuote {
+  margin-bottom: 30px;
+  color: #9aa0ad;
+  font-size: clamp(1.08rem, 4vw, 1.45rem);
+  font-weight: 850;
+  line-height: 1.5;
+}
+
+.addTaskRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 112px;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.addTaskRow input,
+.inlineTaskInput,
+.importPanel textarea {
+  border: 2px solid #dfe2e7;
+  border-radius: 18px;
+  background: #fbfcfe;
+  color: #303848;
+  outline: none;
+}
+
+.addTaskRow input,
+.inlineTaskInput {
+  min-height: 68px;
+  padding: 0 24px;
+  font-size: clamp(1rem, 3.7vw, 1.35rem);
+  font-weight: 850;
+}
+
+.addTaskRow input::placeholder,
+.importPanel textarea::placeholder {
+  color: #a4abb6;
+}
+
+.addTaskRow button {
+  min-height: 68px;
+  border-radius: 20px;
+  background: var(--green-deep);
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 950;
+}
+
+.taskListScroller {
+  position: relative;
+  max-height: 410px;
+}
+
+.configTaskList {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 18px;
+  max-height: 410px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+  list-style: none;
+}
+
+.configTaskList::-webkit-scrollbar {
+  display: none;
+}
+
+.configTaskList li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  min-height: 84px;
+  padding: 14px 22px;
+  border: 1px solid #ebedf0;
+  border-radius: 22px;
+  background: #f8f9fb;
+  color: #303848;
+  font-size: clamp(1.08rem, 4vw, 1.45rem);
+  font-weight: 900;
+}
+
+.configTaskList li > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.taskIconActions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.taskIconActions button {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: transparent;
+  font-size: 1.18rem;
+}
+
+.inlineTaskInput {
+  width: 100%;
+  min-width: 0;
+  background: #fff;
+}
+
+.importPanel {
+  padding: 34px;
+  border-style: dashed;
+  border-width: 3px;
+}
+
+.importPanel h2 {
+  margin-bottom: 22px;
+  color: #687285;
+  font-size: clamp(1.1rem, 4vw, 1.45rem);
+  font-weight: 950;
+}
+
+.importPanel textarea {
+  width: 100%;
+  min-height: 138px;
+  margin-bottom: 28px;
+  padding: 22px;
+  resize: vertical;
+  color: #303848;
+  font-size: clamp(1rem, 3.7vw, 1.35rem);
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.importPanel button {
+  width: 100%;
+  min-height: 64px;
+  border-radius: 20px;
+  background: #fff2bd;
+  color: #8a620c;
+  font-size: clamp(1.08rem, 4vw, 1.42rem);
+  font-weight: 950;
+}
+
+.celebrationBubble {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(255, 248, 231, 0.42);
+  color: var(--ink);
+  font-size: clamp(2.4rem, 12vw, 5.6rem);
+  font-weight: 950;
+  line-height: 1.04;
+  text-align: center;
+  backdrop-filter: blur(4px);
+  animation: popWin 1.9s ease forwards;
+  pointer-events: none;
+}
+
+.bottomFunctionBar {
+  position: fixed;
+  right: max(16px, calc((100vw - 844px) / 2 + 18px));
+  bottom: 18px;
+  left: max(16px, calc((100vw - 844px) / 2 + 18px));
+  z-index: 12;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid rgba(206, 194, 166, 0.58);
+  border-radius: 24px;
+  background: rgba(255, 253, 246, 0.88);
+  box-shadow: 0 16px 42px rgba(104, 80, 31, 0.18);
+  backdrop-filter: blur(16px);
+}
+
+.bottomFunctionBar button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 56px;
+  border-radius: 18px;
+  background: rgba(255, 253, 246, 0.78);
+  color: #777266;
+  font-weight: 950;
+}
+
+.bottomFunctionBar button.active:first-child {
+  background: #dff3ff;
+  color: #25231f;
+}
+
+.bottomFunctionBar button.active:not(:first-child) {
+  background: #f5ead0;
+  color: #25231f;
+}
+
+.bottomFunctionBar span {
+  font-size: 1.28rem;
+  line-height: 1;
+}
+
+@keyframes popWin {
+  0% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  78% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+@media (max-width: 700px) {
+  .pageShell {
+    padding: calc(20px + env(safe-area-inset-top, 0px)) 16px calc(118px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .phoneStage {
+    min-height: calc(100vh - 20px - env(safe-area-inset-top, 0px));
+    padding: 28px 28px 26px;
+  }
+
+  .configSection {
+    padding: 42px 10px 0;
+  }
+
+  .reminderCard {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .toggleSwitch {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .timeInput {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 520px) {
+  .phoneStage {
+    padding: 24px 12px;
+  }
+
+  .homeMoodButtons {
+    gap: 8px;
+  }
+
+  .homeMoodButtons button {
+    height: 46px;
+    min-height: 46px;
+    padding: 0 6px;
+    font-size: clamp(0.94rem, 4.3vw, 1.08rem);
+  }
+
+  .statePicker {
+    margin-bottom: 46px;
+  }
+
+  .drawStage {
+    min-height: 248px;
+    margin-bottom: 36px;
+  }
+
+  .gachaCard {
+    min-height: 248px;
+    padding: 24px 14px 30px;
+  }
+
+  .gachaMachineImage {
+    width: min(82%, 280px);
+  }
+
+  .gachaButton {
+    width: 100%;
+    padding: 0 12px;
+  }
+
+  .resultCard {
+    padding: 18px;
+  }
+
+  .resultActions {
+    gap: 12px;
+  }
+
+  .sosButton {
+    min-height: 72px;
+    padding: 0 18px;
+  }
+
+  .reminderCard,
+  .poolConfigCard,
+  .importPanel {
+    border-radius: 24px;
+  }
+
+  .reminderCard,
+  .poolConfigCard,
+  .importPanel {
+    padding: 24px;
+  }
+
+  .addTaskRow {
+    grid-template-columns: 1fr;
+  }
+
+  .configTaskList li {
+    min-height: 72px;
+    padding: 12px 16px;
+  }
+
+  .configTaskList {
+    max-height: 356px;
+  }
+
+  .taskListScroller {
+    max-height: 356px;
+  }
+}
