@@ -44,7 +44,14 @@
 
 ## 本地开发
 
+准备：
+
+- Node.js 18 或更高版本
+- npm
+
 ```bash
+git clone https://github.com/pepperony98-cyber/Micro-Action.git
+cd Micro-Action
 npm install
 npm run dev
 ```
@@ -59,6 +66,52 @@ npm run build
 ```
 
 注意：当前 `npm run lint` 实际执行的是 `tsc --noEmit`，用于 TypeScript 类型检查。
+
+## 部署到 Vercel
+
+这个项目是纯前端 Next.js 应用，不需要数据库，也不需要配置环境变量。
+
+### 方式一：网页导入
+
+1. Fork 或下载本仓库。
+2. 登录 [Vercel](https://vercel.com)。
+3. 点击 `New Project`。
+4. 选择 GitHub 仓库 `Micro-Action`。
+5. 保持默认配置：
+   - Framework Preset: `Next.js`
+   - Install Command: `npm install`
+   - Build Command: `npm run build`
+   - Output Directory: 不用填写
+6. 点击 `Deploy`。
+
+部署完成后，Vercel 会生成一个可访问的 App 链接。
+
+### 方式二：让 Codex 协助部署
+
+如果你把这个 GitHub 链接交给 Codex，让它帮你安装和部署，通常需要先准备：
+
+- 一个 Vercel 账号
+- 已登录 Vercel，或提供 Vercel CLI 可用的登录授权
+- 已授权 Vercel 读取你的 GitHub 仓库
+
+Codex 可以协助完成：
+
+- 克隆仓库
+- 安装依赖
+- 本地构建检查
+- 按 Vercel 流程部署
+
+但 Codex 不能凭空登录你的 Vercel 账号。遇到登录、授权、验证码或 GitHub App 授权页面时，需要你自己确认。
+
+## 访问统计
+
+项目已经接入 Vercel Web Analytics。部署到 Vercel 后，在 Vercel 项目后台打开：
+
+```text
+Analytics → Enable
+```
+
+重新部署并访问站点后，就可以看到页面浏览量、访客、来源等匿名统计数据。
 
 ## 发布同步
 
